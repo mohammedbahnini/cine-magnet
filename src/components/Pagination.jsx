@@ -6,7 +6,7 @@ export default function Pagination() {
 
     const [paginationItems, setpaginationItems] = useState([]);
     const [pages, setPages] = useState(10);
-    const [pagesToShow, setPagesToShow] = useState(6);
+    const [pagesToShow, setPagesToShow] = useState(4);
     const [current, setCurrent] = useState(1);
 
 
