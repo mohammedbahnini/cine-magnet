@@ -1,0 +1,98 @@
+.movie-card{
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 0 18px 0 rgba(black , .1);
+    &-body{
+        position: relative;
+        .movie-year , .movie-rating {
+            position: absolute;
+            background-color: rgba(white , .25);
+            backdrop-filter: blur(5px);
+            border-radius: 20px;
+            color: white ;
+            font-size: .9rem;
+            padding: .4rem 1.2rem;
+            @include mq($sm){
+                font-size: .6rem;
+                padding: .3rem .6rem;
+            }
+        }
+        .movie-year{
+            top: 1rem;
+            left: 1rem ;
+            @include mq($sm){
+                top: .5rem;
+                left : .5rem;
+            }
+        }
+        .movie-rating{
+            top: 1rem;
+            right: 1rem;
+            background-color: rgba(rgb(46, 190, 46) , .5);
+            @include mq($sm){
+                top: .5rem;
+                right : .5rem;
+            }
+        }
+
+        .movie-poster{
+            aspect-ratio: 9 / 14 ;
+        }
+        img{
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 1;
+        }
+
+        .movie-hover{
+            position: absolute;
+            bottom: 1rem;
+            background-color: rgba(black , .4);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: end;
+            padding: 1rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: .2s ease-in;
+            .movie-link{
+                background-color: $light-red;
+                color: white ;
+                border-radius: 10px;
+                display: block;
+                width: 100%;
+                padding: 1rem ;
+                text-align: center;
+                cursor: pointer;
+                border: none;
+                outline: none;
+                @include mq($sm){
+                    font-size: .8rem;
+                    padding: .6rem;
+                }
+            }
+        }
+
+        &:hover{
+            .movie-hover{
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+      
+    }
+
+    &-footer{
+        background-color: white;
+        padding: 1.5rem;
+        font-weight: bold;
+        color: $title-color;
+        @include mq($sm){
+            padding: 1rem;
+            font-size: .8rem;
+        }
+    }
+}

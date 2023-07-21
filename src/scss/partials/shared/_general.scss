@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Lunasima:wght@400;700&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*, *::after  , *::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html{
+    font-size: 16px;
+}
+body {
+    min-height: 100vh;
+    font-family: $text-font-family ;
+    background-color: $bg-light-gray;
+
+}
+.container {
+    max-width: calc( #{$max-container-width} + 2rem) ;
+    padding: 0 1rem;
+    margin: 0 auto ;
+}
+a{
+    text-decoration: none;
+}
+
+ul , ol{
+    list-style: none;
+}
+
+p{
+    line-height: 1.5em  ;
+}
+
+// main sections
+.main-section {
+    padding: 7rem 0;
+    @include mq($md){
+        padding: 5rem 0;
+    }
+    @include mq($sm){
+        padding: 3rem 0;
+    }
+}
+
+// section titles
+.main-section-title{
+    color: $title-color;
+    font-family: $title-font-family;
+    text-align: center;
+    font-size: 2.5rem;
+    position: relative;
+    max-width: fit-content;
+    margin: 0 auto ;
+    margin-bottom: 7rem;
+    @include mq($md){
+        margin-bottom: 5rem;
+    }
+    @include mq($sm){
+        margin-bottom: 3rem;
+        font-size: 1.6rem;
+    }
+    &::after{
+        content: '';
+        position: absolute ;
+        width: 100%;
+        height: 4px;
+        border-radius: 4px;
+        background-color: $light-red;
+        left: 0;
+        bottom: -.5rem;
+    }
+
+}
+
+.arrows{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 4rem;
+
+    button{
+        border: none;
+        outline: none;
+        border-radius: 50%;
+        padding: 1rem;
+        font-size: 1.6rem;
+        background-color: rgba(white , .9);
+        cursor: pointer;
+        opacity: .5;
+        transition: .2S ease-in;
+        &:hover{
+            opacity: 1;
+            transform: scale(1.1);
+        }
+    }
+}
+
+
+
+.slick-slide > div {
+    margin: 0 10px;
+  }
+  .slick-list {
+    margin: 0 -10px;
+    padding: 20px 0;
+  }

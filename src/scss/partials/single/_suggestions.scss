@@ -1,0 +1,11 @@
+.suggestions{
+    background-color: $light-gray   ;
+    .suggestions-items{
+        display: grid;
+        grid-template-columns: repeat(4 , 1fr);
+        gap: 2rem;
+        @include mq($sm){
+            grid-template-columns: repeat(2 , 1fr);
+        }
+    }
+}

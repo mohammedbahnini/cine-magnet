@@ -1,0 +1,18 @@
+.movies-wrapper{
+    .main-section-title{
+        margin-bottom: 0;
+    }
+    .movies-items{
+        display: grid;
+        grid-template-columns: repeat(4 , 1fr);
+        gap: 1rem;
+        padding: 5rem 0;
+        @include mq($md){
+            grid-template-columns: repeat(4   , 1fr);
+        }
+        @include mq($sm){
+            grid-template-columns: repeat(2  , 1fr);
+        }
+    }   
+
+}

@@ -1,0 +1,22 @@
+
+
+.last-added{
+    background-color: rgba($dark-gray  , .1);
+    &-items{
+        display: flex;
+        gap: 2rem;
+
+        .movie-card{
+            flex: 1;
+        }
+    }
+
+}
+
+.slick-slide > div {
+    margin: 0 10px;
+  }
+  .slick-list {
+    margin: 0 -10px;
+    padding: 20px 0;
+  }

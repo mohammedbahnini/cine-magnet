@@ -1,0 +1,50 @@
+
+
+.features {
+    text-align: center;
+
+    &-items {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+
+        @include mq($md) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @include mq($sm) {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+
+    .feature {
+        background-color: white;
+        border-radius: 15px;
+        padding: 1.3rem 1rem;
+        box-shadow: 0 0 18px 0 rgba(black, .1);
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        flex: 1;
+        transition: .1s linear;
+
+        &:hover {
+            transform: scale(1.2);
+        }
+
+        &-logo {
+            color: $light-red;
+            font-size: 2.5rem;
+        }
+
+        &-title {
+            color: $title-color;
+            font-size: 1.6rem;
+
+        }
+
+        p {
+            color: $text-color;
+        }
+    }
+
+}

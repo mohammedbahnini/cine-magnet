@@ -1,0 +1,14 @@
+@import 'mixins/breakpoints';
+@import 'partials/shared/general';
+@import 'partials/shared/header';
+@import 'partials/shared/movie-card';
+
+
+@import 'partials/home/hero';
+@import 'partials/home/features';
+@import 'partials/home/last-added';
+@import 'partials/home/most-downlods';
+@import 'partials/home/upcoming';
+
+
+@import 'partials/all-movies/search';

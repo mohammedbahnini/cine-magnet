@@ -1,0 +1,140 @@
+.movie-wrapper {
+    margin-top: 10rem;
+    margin-bottom: 6rem;
+    .container {
+        display: flex;
+        gap: 8rem;
+        @include mq($sm){
+            flex-direction: column;
+            gap: 1rem;
+        }
+    } 
+
+    .movie-poster{
+        flex: 1.2;
+       
+        @include mq($sm){
+            width: 80%;
+            margin: 0 auto ;
+        }
+        .movie-poster-wrapper{
+           border-radius: 10px;
+           overflow: hidden;
+           margin-bottom: 1rem;
+           box-shadow: 0 0 18px 0 rgba(black , .1);
+            img{
+                display: block;
+                width: 100%;
+
+            }
+        }
+
+        .download-links{
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+  
+            a{
+                display: block;
+                text-align: center;
+                color: white;
+                padding: .7em;
+                background-color: $light-red;
+                border-radius: 10px;
+                font-size: .9rem;
+            }
+        }
+    }
+
+    .movie-details{
+        flex: 2.7;
+        @include mq($sm){
+            width: 100%;
+        }
+        .movie-title{
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            .title{
+                color: $title-color;
+                font-size: 2.2rem;
+            }
+            span{
+                display: block;
+                font-size: .9rem;
+                i{
+                    color: rgb(226, 226, 0);
+                }
+            }
+        }
+
+        .movie-genres{
+            font-size: .8rem;
+            color: rgba($title-color , .7);
+            margin-bottom: 1rem;
+        }
+
+        .movie-year{
+            font-size: .8rem;
+            color: rgba($title-color , .7);
+            margin-bottom: 1rem;
+        }
+
+        .movie-overview .overview-title , 
+        .movie-links .title{
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            color: $title-color;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            &::after{
+                content: '';
+                background-color: $light-red;
+                height: 3px;
+                position: absolute;
+                bottom: -.3rem;
+                left: 0;
+                width: 100%;
+            }
+        }
+
+        .movie-overview{
+            margin-bottom: 1rem;
+          
+           
+            .overview-title{
+                
+            }
+            p{
+                font-size: 1rem;
+                color: $dark-gray;
+            }
+        }
+
+        .movie-links{
+           .links{
+            margin-top: .5rem;
+            @include mq($sm){
+                display: flex;
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+           }
+            a{
+                display: inline-block;
+                padding: .7em 4em;
+                background-color: $light-gray;
+                border-radius: 5px;
+                color: black;
+                font-size: .8rem;
+                @include mq($sm){
+                    width: calc(50% - .5rem);
+
+                }
+                
+            }
+        }
+    }
+}

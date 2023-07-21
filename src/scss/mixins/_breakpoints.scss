@@ -1,0 +1,8 @@
+@import '../partials/shared/vars';
+
+@mixin mq($mq){
+    @media only screen and (max-width : $mq)
+    {
+        @content ;
+    }
+}

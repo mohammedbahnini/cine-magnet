@@ -1,0 +1,11 @@
+.upcoming{
+    background-color: rgba($dark-gray  , .1);
+    &-items{
+        display: flex;
+        gap: 2rem;
+
+        .movie-card{
+            flex: 1;
+        }
+    }
+}
