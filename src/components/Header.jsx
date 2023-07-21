@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
-export default function Header(){
+export default function Header(props){
+    const { className } = props;
     return (
-        <header>
+        <header className={className}>
         <div className="container">
 
 
@@ -22,7 +23,7 @@ export default function Header(){
                         </a>
                     </li>
                     <li>
-                        <Link to="all-movies" className='link'>Browse All Movies</Link>
+                        <Link to="/all-movies" className='link'>Browse All Movies</Link>
                     </li>
                 </ul>
 

@@ -4,6 +4,9 @@
     .container {
         display: flex;
         gap: 8rem;
+        @include mq($md){
+            gap: 3rem;
+        }
         @include mq($sm){
             flex-direction: column;
             gap: 1rem;
@@ -12,7 +15,10 @@
 
     .movie-poster{
         flex: 1.2;
-       
+        @include mq($md){
+            width: 30%;
+            flex: auto;
+        }
         @include mq($sm){
             width: 80%;
             margin: 0 auto ;
@@ -48,9 +54,14 @@
 
     .movie-details{
         flex: 2.7;
+        @include mq($md){
+            width: 50%;
+            flex: auto;
+        }
         @include mq($sm){
             width: 100%;
         }
+        
         .movie-title{
             display: flex;
             align-items: center;
@@ -103,10 +114,7 @@
         .movie-overview{
             margin-bottom: 1rem;
           
-           
-            .overview-title{
-                
-            }
+
             p{
                 font-size: 1rem;
                 color: $dark-gray;
@@ -129,9 +137,11 @@
                 border-radius: 5px;
                 color: black;
                 font-size: .8rem;
+                margin-right: 1rem;
+                margin-bottom: 1rem;
                 @include mq($sm){
                     width: calc(50% - .5rem);
-
+                    margin-right: 0;
                 }
                 
             }

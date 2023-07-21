@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Home from './pages/Home';
 import { createBrowserRouter , createRoutesFromElements , Route, RouterProvider } from 'react-router-dom';
 import AllMovies from './pages/AllMovies';
+import SingleMovie from './pages/SingleMovie';
 
 const router = createBrowserRouter(
   [
@@ -12,6 +13,10 @@ const router = createBrowserRouter(
     ,{
       path : '/all-movies' , 
       element : <AllMovies />
+    } , 
+    {
+      path : 'movie-details' , 
+      element : <SingleMovie />
     }
   ]
 )

@@ -4,6 +4,7 @@ import batman from '../assets/batman.jpg';
 import avatar from '../assets/avatar.jpg';
 
 import { useRef } from "react";
+import MovieCard from "./MovieCard";
 
 
 
@@ -33,7 +34,7 @@ export default function LastAdded() {
             },
 
         ],
-        arrows : false
+        arrows: false
     };
 
 
@@ -46,171 +47,21 @@ export default function LastAdded() {
                 <Slider {...config} ref={slider} className="last-added-items">
 
 
-                    <div className="last-added-item movie-card">
-                        <a href="#" className="movie-card-body">
 
-                            <div className="movie-hover">
-                                <button className="movie-link">View Details</button>
-                            </div>
-
-                            <div className="movie-poster">
-                                <img src={avengers} alt="Avengers" />
-                            </div>
-
-                            <span className="movie-year">2022</span>
-                            <span className="movie-rating">7</span>
-                        </a>
-
-                        <div className="movie-card-footer">
-                            <p>Avengers</p>
-                        </div>
-
-                    </div>
-
-
-                    <div className="last-added-item movie-card">
-                        <div className="movie-card-body">
-                            <div className="movie-hover">
-                                <button className="movie-link">View Details</button>
-                            </div>
-                            <div className="movie-poster">
-                                <img src={batman} alt="Batman" />
-                            </div>
-
-                            <span className="movie-year">2022</span>
-                            <span className="movie-rating">7</span>
-                        </div>
-                        <div className="movie-card-footer">
-                            <p>The Batman</p>
-                        </div>
-                    </div>
-
-
-
-                    <div className="last-added-item movie-card">
-                        <div className="movie-card-body">
-
-                            <div className="movie-hover">
-                                <button className="movie-link">View Details</button>
-                            </div>
-                            <div className="movie-poster">
-                                <img src={avatar} alt="Avatar" />
-                            </div>
-
-                            <span className="movie-year">2022</span>
-                            <span className="movie-rating">7</span>
-                        </div>
-                        <div className="movie-card-footer">
-                            <p>Avatar</p>
-                        </div>
-                    </div>
-
-
-                    <div className="last-added-item movie-card">
-                        <div className="movie-card-body">
-
-                            <div className="movie-hover">
-                                <button className="movie-link">View Details</button>
-                            </div>
-                            <div className="movie-poster">
-                                <img src="assets/aquaman.jpg" alt="Aquaman" />
-                            </div>
-
-                            <span className="movie-year">2018</span>
-                            <span className="movie-rating">7</span>
-                        </div>
-                        <div className="movie-card-footer">
-                            <p>Aquaman</p>
-                        </div>
-                    </div>
-
-
-                    <div className="last-added-item movie-card">
-                        <div className="movie-card-body">
-                            <div className="movie-hover">
-                                <button className="movie-link">View Details</button>
-                            </div>
-                            <div className="movie-poster">
-                                <img src="assets/aquaman.jpg" alt="Aquaman" />
-                            </div>
-
-                            <span className="movie-year">2018</span>
-                            <span className="movie-rating">7</span>
-                        </div>
-                        <div className="movie-card-footer">
-                            <p>Aquaman</p>
-                        </div>
-                    </div>
-
-
-
-                    <div className="last-added-item movie-card">
-                        <div className="movie-card-body">
-                            <div className="movie-hover">
-                                <button className="movie-link">View Details</button>
-                            </div>
-                            <div className="movie-poster">
-                                <img src="assets/aquaman.jpg" alt="Aquaman" />
-                            </div>
-
-                            <span className="movie-year">2018</span>
-                            <span className="movie-rating">7</span>
-                        </div>
-                        <div className="movie-card-footer">
-                            <p>Aquaman</p>
-                        </div>
-                    </div>
-
-
-
-                    <div className="last-added-item movie-card">
-                        <div className="movie-card-body">
-                            <div className="movie-hover">
-                                <button className="movie-link">View Details</button>
-                            </div>
-                            <div className="movie-poster">
-                                <img src="assets/aquaman.jpg" alt="Aquaman" />
-                            </div>
-
-                            <span className="movie-year">2018</span>
-                            <span className="movie-rating">7</span>
-                        </div>
-                        <div className="movie-card-footer">
-                            <p>Aquaman</p>
-                        </div>
-                    </div>
-
-
-
-
-                    <div className="last-added-item movie-card">
-                        <div className="movie-card-body">
-                            <div className="movie-hover">
-                                <button className="movie-link">View Details</button>
-                            </div>
-                            <div className="movie-poster">
-                                <img src="assets/aquaman.jpg" alt="Aquaman" />
-                            </div>
-
-                            <span className="movie-year">2018</span>
-                            <span className="movie-rating">7</span>
-                        </div>
-                        <div className="movie-card-footer">
-                            <p>Aquaman</p>
-                        </div>
-                    </div>
-
+                    {
+                        [...Array(8)].map((item, index) => <MovieCard key={index} />)
+                    }
 
 
                 </Slider>
 
                 <div className="arrows">
-                    <button className="prev" 
-                    onClick={()=> slider.current.slickPrev()}>
+                    <button className="prev"
+                        onClick={() => slider.current.slickPrev()}>
                         <i className="fa-solid fa-arrow-left-long"></i>
                     </button>
-                    <button className="next" 
-                    onClick={()=> slider.current.slickNext()}>
+                    <button className="next"
+                        onClick={() => slider.current.slickNext()}>
                         <i className="fa-solid fa-arrow-right-long"></i>
                     </button>
                 </div>
