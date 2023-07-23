@@ -1,22 +1,31 @@
 import { Link } from "react-router-dom";
 
-export default function MovieCard() {
+export default function MovieCard(props) {
+    const { movie } = props;
+
+    // const movie = {
+    //     title : 'Avengers' , 
+    //     rating : 8  , 
+    //     year : 2020 ,
+    //     large_cover_image : 'assets/avengers.jpg'
+    // } 
+
     return (
         <div className="movie-card">
             <div className="movie-card-body">
                 <div className="movie-hover">
 
-                    <Link to='/movie-details' className="movie-link">View Details</Link>
+                    <Link to={`/movie-details/${movie.id}`} className="movie-link">View Details</Link>
                 </div>
                 <div className="movie-poster">
-                    <img src="assets/avengers.jpg" alt="Avengers" />
+                    <img src={movie.large_cover_image || movie.medium_cover_image} alt="Avengers" />
                 </div>
 
-                <span className="movie-year">2022</span>
-                <span className="movie-rating">7</span>
+                <span className="movie-year">{movie.year}</span>
+                <span className="movie-rating">{movie.rating}</span>
             </div>
             <div className="movie-card-footer">
-                <p>Avengers</p>
+                <p>{movie.title}</p>
             </div>
         </div>
 

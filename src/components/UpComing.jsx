@@ -1,6 +1,7 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Slider from "react-slick"
 import MovieCard from "./MovieCard";
+import axios from "axios";
 
 export default function UpComing() {
 
@@ -30,6 +31,33 @@ export default function UpComing() {
         ],
         arrows: false
     };
+
+
+
+    // data about movies
+    const [movies, setMovies] = useState([]);
+    const [error, setError] = useState(false);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+
+        // get last added movies
+        axios.get('https://yts.mx/api/v2/list_movies.json?limit=12&sort_by=download_count&order_by=desc')
+            .then((response) => {
+                console.log(response.data.data);
+                const { movies } = response.data.data;
+                setMovies(movies);
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.log(error);
+                setError(true);
+                setLoading(true);
+            });
+
+
+    }, []);
+
 
 
 

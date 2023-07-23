@@ -1,6 +1,7 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Slider from "react-slick"
 import MovieCard from "./MovieCard";
+import axios from "axios";
 
 export default function MostDownLoads() {
 
@@ -32,21 +33,55 @@ export default function MostDownLoads() {
     };
 
 
+
+        // data about movies
+        const [movies, setMovies ] = useState([]);
+        const [error, setError] = useState(false);
+        const [loading, setLoading] = useState(true);
+    
+        useEffect(() => {
+    
+            // get last added movies
+            axios.get('https://yts.mx/api/v2/list_movies.json?limit=12&sort_by=download_count&order_by=desc')
+                .then((response) => {
+                    console.log(response.data.data);
+                    const { movies } = response.data.data;
+                    setMovies(movies);
+                    setLoading(false);
+                })
+                .catch((error) => {
+                    console.log(error);
+                    setError(true);
+                    setLoading(true);
+                });
+    
+    
+        }, []);
+    
+
+
     return (
         <section className="main-section most-downloads">
 
             <div className="container">
                 <h1 className="main-section-title">Most Downloads</h1>
 
+                {loading && <p>Loading ...</p>}
+                {error && <p>An error has occured !</p>}
 
+                { !loading && !error &&
+                
                 <Slider {...config} ref={slider} className="most-downloads-items">
 
                     {
-                        [...Array(8)].map((item, index) => <MovieCard key={index} />)
+                        movies.map((movie , index) => <MovieCard key={index} movie={movie} />)
                     }
 
 
                 </Slider>
+
+                }
+                
 
 
                 <div className="arrows">

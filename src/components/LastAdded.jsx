@@ -3,15 +3,15 @@ import avengers from '../assets/avengers.jpg';
 import batman from '../assets/batman.jpg';
 import avatar from '../assets/avatar.jpg';
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import MovieCard from "./MovieCard";
+import axios from "axios";
 
 
 
 export default function LastAdded() {
 
     const slider = useRef(null);
-
     const config = {
         slidesToShow: 4,
         slidesToScroll: 4,
@@ -37,6 +37,30 @@ export default function LastAdded() {
         arrows: false
     };
 
+    // data about movies
+    const [lastAddedMovies, setlastAddedMovies] = useState([]);
+    const [error, setError] = useState(false);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+
+        // get last added movies
+        axios.get('https://yts.mx/api/v2/list_movies.json?limit=12&sort_by=date_added')
+            .then((response) => {
+                console.log(response.data.data);
+                const { movies } = response.data.data;
+                setlastAddedMovies(movies);
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.log(error);
+                setError(true);
+                setLoading(true);
+            });
+
+
+    }, []);
+
 
     return (
         <section className="main-section last-added">
@@ -44,16 +68,24 @@ export default function LastAdded() {
 
                 <h2 className="main-section-title">Last Added</h2>
 
-                <Slider {...config} ref={slider} className="last-added-items">
+                {loading && <p>Loading ...</p>}
+                {!error && !loading && <Slider {...config} ref={slider} className="last-added-items">
 
 
 
-                    {
-                        [...Array(8)].map((item, index) => <MovieCard key={index} />)
-                    }
+                    {/* {
+    [...Array(8)].map((item, index) => <MovieCard key={index} />)
+} */}
+
+                {lastAddedMovies.map( (movie , index)=>{
+                    return (
+                        <MovieCard movie={movie} key={index} />
+                    )
+                } )}
 
 
-                </Slider>
+                </Slider>}
+
 
                 <div className="arrows">
                     <button className="prev"
