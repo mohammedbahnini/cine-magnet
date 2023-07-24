@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { stateContext } from "../pages/AllMovies";
+import { stateContext } from "../pages/Layout";
 import { Link } from "react-router-dom";
 
 

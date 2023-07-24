@@ -1,11 +1,17 @@
-import { useContext, useEffect } from "react"
-import { stateContext } from "../pages/AllMovies"
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react"
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 
 export default function SearchSection() {
-    const {state , dispatch } = useContext(stateContext);
-    const navigate = useNavigate();
 
+    const [searchParams] = useSearchParams();
+    const params = Object.fromEntries( [...searchParams]);
+    console.log(params.query || 'empty string');
+
+    const [searchText , setSearchText ] = useState(params.query || '');
+
+    useEffect( ()=>{
+        setSearchText(params.query || '');
+    } , [params.query])
 
     return (
         <section className="search">
@@ -14,7 +20,12 @@ export default function SearchSection() {
 
                 <div className="search-container">
                     <div>
-                        <input type="text" placeholder="Quick Search" className='nav-search-input' value={state.querySearch} onChange={(e)=> dispatch({ querySearch : e.target.value})} />
+                        <input 
+                        type="text" 
+                        placeholder="Quick Search" 
+                        className='nav-search-input' 
+                        value={searchText} 
+                        onChange={(e)=> setSearchText(e.target.value) } />
 
                     </div>
 
@@ -136,11 +147,11 @@ export default function SearchSection() {
 
                     </div>
 
-                    <button onClick={()=>navigate(`/all-movies?query=${state.querySearch}`)} >
+                    <Link to={`/all-movies${searchText && '?query=' + searchText }`} className="search-btn" >
                         <span>
                             <i className="fa-solid fa-magnifying-glass"></i>
                         </span> Search
-                    </button>
+                    </Link>
 
                 </div>
 

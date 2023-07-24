@@ -5,16 +5,13 @@ import MovieSuggestions from "../components/MovieSuggestion";
 import '../scss/single.scss';
 
 export default function SingleMovie() {
-    useEffect( ()=>{
-        window.scrollTo(0, 0);
-    },[])
+    useEffect(() => {
+      
+    }, [])
     return (
         <>
-            <Header className='scrolled'  />
-            <main>
-                <MovieDetails />
-                <MovieSuggestions />
-            </main>
+            <MovieDetails />
+            <MovieSuggestions />
         </>
     )
 }

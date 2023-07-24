@@ -57,7 +57,9 @@ export default function LastAdded() {
                 setLoading(true);
             });
 
-
+            return ()=>{
+                return null;
+            };
     }, []);
 
 

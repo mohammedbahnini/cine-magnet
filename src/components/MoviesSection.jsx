@@ -1,7 +1,7 @@
 import { createContext, useContext, useReducer } from "react";
 import MoviesList from "./MoviesList";
 import Pagination from "./Pagination";
-import { stateContext } from "../pages/AllMovies";
+import { stateContext } from "../pages/Layout";
 
 
 export default function MoviesSection() {

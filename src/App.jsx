@@ -10,7 +10,10 @@ function App() {
 
   return (
     <>
-      <Outlet />
+      <div className="page-loader">
+        <p>loading page ...</p>
+      </div>
+      {/* <Outlet /> */}
     </>
 
   )

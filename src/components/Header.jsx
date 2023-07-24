@@ -9,18 +9,18 @@ export default function Header(props){
 
 
             <nav>
-                <a href="/" className="logo">
+                <Link to={'/'} className="logo">
                     <img src={logo}  alt="CineMagnet" />
-                </a>
+                </Link>
 
 
 
                 <ul>
 
                     <li>
-                        <a href="/" className="link">
+                        <Link to={'/'} className="link">
                             Home
-                        </a>
+                        </Link>
                     </li>
                     <li>
                         <Link to="/all-movies" className='link'>Browse All Movies</Link>

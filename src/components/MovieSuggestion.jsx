@@ -39,21 +39,6 @@ export default function MovieSuggestions() {
                             suggestions.map((movie, index) => {
                                 return (
                                     <div className="last-added-item movie-card" key={index}>
-                                        
-                                        {/* <div className="movie-card-body">
-                                            <div className="movie-hover">
-                                                <button className="movie-link">View Details</button>
-                                            </div>
-                                            <div className="movie-poster">
-                                                <img src="assets/aquaman.jpg" alt="Aquaman" />
-                                            </div>
-
-                                            <span className="movie-year">{movie.year}</span>
-                                            <span className="movie-rating">{movie.rating}</span>
-                                        </div>
-                                        <div className="movie-card-footer">
-                                            <p>{movie.title}</p>
-                                        </div> */}
                                     <MovieCard movie={movie} key={index} />
                                     </div>
                                 )

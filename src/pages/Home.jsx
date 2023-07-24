@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Features from '../components/Features';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
@@ -8,34 +8,24 @@ import MostDownLoads from '../components/MostDownloads';
 import UpComing from '../components/UpComing';
 import axios from 'axios';
 import ScrollToTop from '../components/ScrollToTop';
+import PageLoader from '../components/PageLoader';
+import { useLoaderData, useNavigation, useOutletContext } from 'react-router-dom';
+import { stateContext } from './Layout';
 
-export default function Home() {
+export default function Home(props) {
 
-    useEffect( () => {
-        // add event listener to the doc for nav styling
-        const header = document.querySelector('header');
-        window.addEventListener("scroll", function (e) {
-            if (window.scrollY >= 100)
-                header.classList.add('scrolled');
-            else
-                header.classList.remove('scrolled');
-        });
+    const data = useLoaderData();
+    console.log(data);
 
-        
-
-    }, []);
 
 
     return (
         <>
-            <Header />
-            <main>
-                <Hero />
-                <Features />
-                <LastAdded />
-                <MostDownLoads />
-                 {/* <UpComing /> */}
-            </main>
+            <Hero />
+            <Features />
+            <LastAdded />
+            <MostDownLoads />
+            {/* <UpComing /> */}
         </>
     )
 }

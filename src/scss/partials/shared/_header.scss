@@ -8,13 +8,7 @@ header{
     z-index: 10;
     
     transition: .2s linear;
-    &.scrolled{
-        background-color: white ;
-        box-shadow: 0 2px 18px 2px rgba(black , .1);
-        nav .link{
-            color: $title-color;
-        }
-    }
+ 
     nav {
         padding: 2rem 0;
         display: flex;
@@ -83,6 +77,14 @@ header{
                     width: 100%;
                 }
             }
+        }
+    }
+
+    &.scrolled{
+        background-color: white !important;
+        box-shadow: 0 2px 18px 2px rgba(black , .1) !important;
+        nav a.link{
+            color: $title-color !important;
         }
     }
 }

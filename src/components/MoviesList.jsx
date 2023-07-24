@@ -1,8 +1,9 @@
 import { useContext, useEffect } from "react"
-import { stateContext } from "../pages/AllMovies"
+
 import MovieCard from '../components/MovieCard';
 import axios from "axios";
 import { useSearchParams } from "react-router-dom";
+import { stateContext } from "../pages/Layout";
 
 
 export default function MoviesList(props) {

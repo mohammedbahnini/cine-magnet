@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom"
 export default function MovieDetails() {
 
     const { movieId } = useParams();
+    console.log(movieId);
 
 
     const [movie, setMovie] = useState(null);
@@ -12,7 +13,7 @@ export default function MovieDetails() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-
+       
 
         axios.get(`https://yts.mx/api/v2/movie_details.json?movie_id=${movieId}&with_images=true`)
             .then((response) => {
@@ -21,14 +22,16 @@ export default function MovieDetails() {
                 setMovie(movie);
                 setLoading(false);
                 setError(null);
+                window.scrollTo(0, 0);
 
             })
             .catch((error) => {
                 setLoading(false);
                 setError('An error has occured !!');
+                console.log(error);
 
             });
-    }, []);
+    }, [movieId]);
 
     return (
         <section className="movie-wrapper">
