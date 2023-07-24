@@ -139,9 +139,23 @@
                 font-size: .8rem;
                 margin-right: 1rem;
                 margin-bottom: 1rem;
+                text-align: center;
+                transition: .2s ease-in;
                 @include mq($sm){
                     width: calc(50% - .5rem);
                     margin-right: 0;
+                }
+                &:hover{
+                    background-color: $light-red;
+                    color: white ;
+                }
+
+                span{
+                    display: block;
+                    &:not(:last-child){
+                        margin-bottom: .5rem ;
+                        text-transform: uppercase;
+                    }
                 }
                 
             }

@@ -1,4 +1,12 @@
+import { useContext, useEffect } from "react"
+import { stateContext } from "../pages/AllMovies"
+import { useNavigate, useSearchParams } from "react-router-dom";
+
 export default function SearchSection() {
+    const {state , dispatch } = useContext(stateContext);
+    const navigate = useNavigate();
+
+
     return (
         <section className="search">
 
@@ -6,7 +14,7 @@ export default function SearchSection() {
 
                 <div className="search-container">
                     <div>
-                        <input type="text" placeholder="Quick Search" className='nav-search-input' />
+                        <input type="text" placeholder="Quick Search" className='nav-search-input' value={state.querySearch} onChange={(e)=> dispatch({ querySearch : e.target.value})} />
 
                     </div>
 
@@ -128,7 +136,7 @@ export default function SearchSection() {
 
                     </div>
 
-                    <button>
+                    <button onClick={()=>navigate(`/all-movies?query=${state.querySearch}`)} >
                         <span>
                             <i className="fa-solid fa-magnifying-glass"></i>
                         </span> Search

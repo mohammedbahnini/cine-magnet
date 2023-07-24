@@ -1,28 +1,34 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { stateContext } from "../pages/AllMovies";
+import { Link } from "react-router-dom";
 
 
 
 export default function Pagination() {
 
     const [paginationItems, setpaginationItems] = useState([]);
-    const [pages, setPages] = useState(10);
-    const [pagesToShow, setPagesToShow] = useState(4);
-    const [current, setCurrent] = useState(1);
 
+    const { state , dispatch } = useContext(stateContext);
+    const {currentPage , pages , pagesToShow , querySearch  } = state ;
 
     const createPaginationItems = () => {
 
             const items = [];
 
             items.push({ text: 'First', pageNumber: 1 });
+            if( currentPage > 1)
+                items.push({ text: 'Prev', pageNumber: currentPage  - 1});
 
 
-            if (pages - (current - 1 + pagesToShow) > 0) // break in end
+
+            if (pages - (currentPage - 1 + pagesToShow) > 0) // break in end
             {
-                for (let i = current; i <= (current + pagesToShow - 1) - 1; i++) {
 
-                    items.push({ text: i, pageNumber: i });
+                for (let i = currentPage; i <= (currentPage + pagesToShow - 1) - 1; i++) {
+                    
+                        items.push({ text: i , pageNumber: i });
                 }
+                
                 items.push({ text: '...', pageNumber: -1 }, { text: pages, pageNumber: pages });
 
             }
@@ -33,7 +39,7 @@ export default function Pagination() {
 
                 for (let i = pages - pagesToShow + 2; i <= pages; i++) {
 
-                    if (i != 0) {
+                    if (i > 0) {
                         items.push({ text: i, pageNumber: i });
                     }
 
@@ -43,14 +49,14 @@ export default function Pagination() {
             items.push({ text: 'Last', pageNumber: pages });
 
             setpaginationItems([...items]);
-            console.log(items);
-        
+
 
     }
 
     useEffect(() => {
         createPaginationItems();
-    }, [current])
+
+    }, [currentPage , pages , pagesToShow ])
 
 
 
@@ -59,12 +65,11 @@ export default function Pagination() {
             <div className="pagination-items">
                 {paginationItems.map((item, index) => {
                     return (
-                        <a
-                            className={['pagination-item ', current === parseInt(item.text) ? 'active' : ''].join(' ')} key={index}
-                            onClick={() => setCurrent(item.pageNumber !== -1 ? item.pageNumber : current) }
+                        <Link to={`/all-movies?query=${querySearch}&page=${item.pageNumber}`}
+                            className={['pagination-item ', currentPage === parseInt(item.text) ? 'active' : ''].join(' ')} key={index}
                         >
                             {item.text}
-                        </a>
+                        </Link>
                     )
                 })}
             </div>

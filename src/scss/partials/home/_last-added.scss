@@ -13,10 +13,20 @@
 
 }
 
-.slick-slide > div {
-    margin: 0 10px;
-  }
-  .slick-list {
-    margin: 0 -10px;
-    padding: 20px 0;
-  }
+
+  .slick-track{
+    display: flex !important;
+}
+.slick-slide{
+    height: inherit !important;
+}
+.slick-slide > div{
+    height: 100%;
+}
+
+.movie-card{
+    height: 100%;
+    &-footer{
+        height: inherit;
+    }
+}

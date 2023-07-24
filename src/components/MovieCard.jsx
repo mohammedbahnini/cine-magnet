@@ -12,7 +12,7 @@ export default function MovieCard(props) {
 
     return (
         <div className="movie-card">
-            <div className="movie-card-body">
+            <div className="movie-card-body"  >
                 <div className="movie-hover">
 
                     <Link to={`/movie-details/${movie.id}`} className="movie-link">View Details</Link>

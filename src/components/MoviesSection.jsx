@@ -1,19 +1,28 @@
+import { createContext, useContext, useReducer } from "react";
 import MoviesList from "./MoviesList";
 import Pagination from "./Pagination";
+import { stateContext } from "../pages/AllMovies";
+
 
 export default function MoviesSection() {
+    const { state  } = useContext(stateContext);
+
+
     return (
-        <section className="main-section  movies-wrapper">
+       
+            <section className="main-section  movies-wrapper">
 
-            <div className="container">
+                <div className="container">
 
-                <h1 className="main-section-title title">120 movie found</h1>
+                    <h1 className="main-section-title title">{state.totalMovies} movie found</h1>
 
-                <MoviesList />
+                    <MoviesList  />
+                    <Pagination />
 
-                <Pagination />
-            </div>
 
-        </section>
+                </div>
+
+            </section>
+     
     )
 }

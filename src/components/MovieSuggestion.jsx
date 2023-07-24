@@ -18,7 +18,7 @@ export default function MovieSuggestions() {
                 setLoading(false);
                 setError(null);
                 setSuggestions(movies);
-                console.log(movies);
+
             })
             .catch((error) => {
                 setLoading(false);

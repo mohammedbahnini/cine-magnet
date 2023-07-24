@@ -47,7 +47,6 @@ export default function LastAdded() {
         // get last added movies
         axios.get('https://yts.mx/api/v2/list_movies.json?limit=12&sort_by=date_added')
             .then((response) => {
-                console.log(response.data.data);
                 const { movies } = response.data.data;
                 setlastAddedMovies(movies);
                 setLoading(false);

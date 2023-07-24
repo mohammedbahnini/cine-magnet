@@ -44,7 +44,7 @@ export default function MostDownLoads() {
             // get last added movies
             axios.get('https://yts.mx/api/v2/list_movies.json?limit=12&sort_by=download_count&order_by=desc')
                 .then((response) => {
-                    console.log(response.data.data);
+
                     const { movies } = response.data.data;
                     setMovies(movies);
                     setLoading(false);

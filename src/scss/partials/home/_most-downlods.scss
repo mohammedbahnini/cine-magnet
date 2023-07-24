@@ -4,4 +4,21 @@
     // .movie-card{
     //     flex: 1;
     // }
+
+    .slick-track{
+        display: flex !important;
+    }
+    .slick-slide{
+        height: inherit !important;
+    }
+    .slick-slide > div{
+        height: 100%;
+    }
+
+    .movie-card{
+        height: 100%;
+        &-footer{
+            height: inherit;
+        }
+    }
 }

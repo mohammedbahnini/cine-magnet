@@ -7,6 +7,7 @@ import '../scss/app.scss';
 import MostDownLoads from '../components/MostDownloads';
 import UpComing from '../components/UpComing';
 import axios from 'axios';
+import ScrollToTop from '../components/ScrollToTop';
 
 export default function Home() {
 
@@ -20,7 +21,7 @@ export default function Home() {
                 header.classList.remove('scrolled');
         });
 
-
+        
 
     }, []);
 
