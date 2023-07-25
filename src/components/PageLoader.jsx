@@ -1,4 +1,4 @@
-import loader from '../../public/assets/infinity.svg';
+import loader from '../assets/infinity.svg';
 export default function PageLoader() {
 
     return (

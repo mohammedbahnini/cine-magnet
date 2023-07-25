@@ -32,16 +32,16 @@ export default function Layout() {
         //          header.classList.remove('scrolled');
         //  });
 
-
-
+        
     }, []);
 
     // show the loading spinner 
-    useLayoutEffect(() => {
-
+    useLayoutEffect( () => {
+       
+        window.scrollTo(0, 0);
         setIsLoading(true);
         document.body.style.overflow = 'hidden';
-        window.scrollTo(0, 0);
+       
 
         setTimeout(() => {
             setIsLoading(false);
