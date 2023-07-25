@@ -22,7 +22,7 @@ export default function MovieDetails() {
                 setMovie(movie);
                 setLoading(false);
                 setError(null);
-                window.scrollTo(0, 0);
+
 
             })
             .catch((error) => {

@@ -103,8 +103,33 @@ p{
     display: flex;
     align-items: center ;
     justify-content: center ;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    right: 0;
+    background-color: white;
+    z-index: 999;
+    @include mq($sm)
+    {
+        img{
+            width: 5rem;
+        }
+    }
 }
 
+
+.section-loader{
+    min-height: 20rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include mq($sm){
+        img{
+            width: 5rem;
+        }
+    }
+}
 
 .slick-slide > div {
     margin: 0 10px;

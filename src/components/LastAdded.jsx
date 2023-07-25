@@ -6,10 +6,11 @@ import avatar from '../assets/avatar.jpg';
 import { useEffect, useRef, useState } from "react";
 import MovieCard from "./MovieCard";
 import axios from "axios";
+import { SectionLoader } from "./SectionLoader";
 
 
 
-export default function LastAdded() {
+export default function LastAdded(props) {
 
     const slider = useRef(null);
     const config = {
@@ -44,22 +45,20 @@ export default function LastAdded() {
 
     useEffect(() => {
 
-        // get last added movies
-        axios.get('https://yts.mx/api/v2/list_movies.json?limit=12&sort_by=date_added')
-            .then((response) => {
-                const { movies } = response.data.data;
-                setlastAddedMovies(movies);
-                setLoading(false);
-            })
-            .catch((error) => {
-                console.log(error);
-                setError(true);
-                setLoading(true);
-            });
+       // get last added movies
+       axios.get('https://yts.mx/api/v2/list_movies.json?limit=12&sort_by=date_added')
+       .then((response) => {
+           const { movies } = response.data.data;
+           setlastAddedMovies(movies);
+           setLoading(false);
+       })
+       .catch((error) => {
+           console.log(error);
+           setError(true);
+           setLoading(false);
+       });
 
-            return ()=>{
-                return null;
-            };
+
     }, []);
 
 
@@ -69,35 +68,36 @@ export default function LastAdded() {
 
                 <h2 className="main-section-title">Last Added</h2>
 
-                {loading && <p>Loading ...</p>}
-                {!error && !loading && <Slider {...config} ref={slider} className="last-added-items">
+                {loading && <SectionLoader />}
+                {error && <p>error while getting data</p>}
+
+                {!error && !loading &&
+                    <><Slider {...config} ref={slider} className="last-added-items">
 
 
-
-                    {/* {
-    [...Array(8)].map((item, index) => <MovieCard key={index} />)
-} */}
-
-                {lastAddedMovies.map( (movie , index)=>{
-                    return (
-                        <MovieCard movie={movie} key={index} />
-                    )
-                } )}
+                        {lastAddedMovies.map((movie, index) => {
+                            return (
+                                <MovieCard movie={movie} key={index} />
+                            )
+                        })}
 
 
-                </Slider>}
+                    </Slider>
+
+                        <div className="arrows">
+                            <button className="prev"
+                                onClick={() => slider.current.slickPrev()}>
+                                <i className="fa-solid fa-arrow-left-long"></i>
+                            </button>
+                            <button className="next"
+                                onClick={() => slider.current.slickNext()}>
+                                <i className="fa-solid fa-arrow-right-long"></i>
+                            </button>
+                        </div>
+                    </>
+                }
 
 
-                <div className="arrows">
-                    <button className="prev"
-                        onClick={() => slider.current.slickPrev()}>
-                        <i className="fa-solid fa-arrow-left-long"></i>
-                    </button>
-                    <button className="next"
-                        onClick={() => slider.current.slickNext()}>
-                        <i className="fa-solid fa-arrow-right-long"></i>
-                    </button>
-                </div>
 
 
             </div>

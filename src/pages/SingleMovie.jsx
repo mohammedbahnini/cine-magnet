@@ -5,9 +5,8 @@ import MovieSuggestions from "../components/MovieSuggestion";
 import '../scss/single.scss';
 
 export default function SingleMovie() {
-    useEffect(() => {
-      
-    }, [])
+
+    
     return (
         <>
             <MovieDetails />

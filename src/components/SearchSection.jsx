@@ -5,7 +5,7 @@ export default function SearchSection() {
 
     const [searchParams] = useSearchParams();
     const params = Object.fromEntries( [...searchParams]);
-    console.log(params.query || 'empty string');
+    //console.log(params.query || 'empty string');
 
     const [searchText , setSearchText ] = useState(params.query || '');
 

@@ -9,18 +9,18 @@ import UpComing from '../components/UpComing';
 import axios from 'axios';
 import ScrollToTop from '../components/ScrollToTop';
 import PageLoader from '../components/PageLoader';
-import { useLoaderData, useNavigation, useOutletContext } from 'react-router-dom';
-import { stateContext } from './Layout';
+import { useLoaderData, useNavigate, useNavigation, useOutletContext } from 'react-router-dom';
+import { stateContext } from '../App';
+
 
 export default function Home(props) {
 
-    const data = useLoaderData();
-    console.log(data);
+    const { isLoading , setIsLoading  }= useOutletContext();
 
-
-
+ 
     return (
         <>
+
             <Hero />
             <Features />
             <LastAdded />

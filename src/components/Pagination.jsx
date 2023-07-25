@@ -1,15 +1,16 @@
 import { useContext, useEffect, useState } from "react";
-import { stateContext } from "../pages/Layout";
+
 import { Link } from "react-router-dom";
 
 
 
-export default function Pagination() {
+export default function Pagination(props) {
 
     const [paginationItems, setpaginationItems] = useState([]);
 
-    const { state , dispatch } = useContext(stateContext);
-    const {currentPage , pages , pagesToShow , querySearch  } = state ;
+
+    const {currentPage , pages , pagesToShow , querySearch  } = props ;
+    console.log(props);
 
     const createPaginationItems = () => {
 
@@ -56,14 +57,15 @@ export default function Pagination() {
     useEffect(() => {
         createPaginationItems();
 
-    }, [currentPage , pages , pagesToShow ])
+    }, [querySearch ])
 
 
 
     return (
         <div className="pagination">
             <div className="pagination-items">
-                {paginationItems.map((item, index) => {
+
+                { pages > 0 && paginationItems.map((item, index) => {
                     return (
                         <Link to={`/all-movies?query=${querySearch}&page=${item.pageNumber}`}
                             className={['pagination-item ', currentPage === parseInt(item.text) ? 'active' : ''].join(' ')} key={index}

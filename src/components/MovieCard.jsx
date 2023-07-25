@@ -11,7 +11,7 @@ export default function MovieCard(props) {
     // } 
 
     return (
-        <div className="movie-card">
+        <Link className="movie-card" to={`/movie-details/${movie.id}`}>
             <div className="movie-card-body"  >
                 <div className="movie-hover">
 
@@ -27,7 +27,7 @@ export default function MovieCard(props) {
             <div className="movie-card-footer">
                 <p>{movie.title}</p>
             </div>
-        </div>
+        </Link>
 
     )
 }
