@@ -3,45 +3,50 @@ import Header from "../components/Header";
 import { createContext, useEffect, useLayoutEffect, useReducer, useState } from "react";
 import PageLoader from "../components/PageLoader";
 
-// export const layoutContext = createContext();
 
-// const initValue = {
-//     loading: true
-// }
-
-// const reducer = (state, action) => {
-//     return { ...state, ...action }
-// }
 
 export default function Layout() {
 
-    //const [state, dispatch] = useReducer(reducer, initValue);
-
     const [isLoading, setIsLoading] = useState(true);
-    const { pathname } = useLocation();
+    const { pathname , search } = useLocation();
 
 
     useEffect(() => {
-
+        window.scrollTo(0,0);
         //  // add event listener to the doc for nav styling
-        //  const header = document.querySelector('header');
-        //  window.addEventListener("scroll", function (e) {
-        //      if (window.scrollY >= 100)
-        //          header.classList.add('scrolled');
-        //      else
-        //          header.classList.remove('scrolled');
-        //  });
+        console.log(pathname);
+        const header = document.querySelector('header');
 
-        
-    }, []);
+        const scrollEvent = function (e) {
+            if (window.scrollY >= 100)
+                header.classList.add('scrolled');
+            else
+                header.classList.remove('scrolled');
+        };
+
+        if (pathname.indexOf('/movie-details') == -1) {
+            window.addEventListener("scroll", scrollEvent);
+            header.classList.remove('scrolled');
+        }
+        else
+            header.classList.add('scrolled');
+
+        return () => {
+            window.removeEventListener('scroll', scrollEvent);
+        }
+
+
+
+
+    }, [pathname , search ]);
 
     // show the loading spinner 
-    useLayoutEffect( () => {
-       
+    useLayoutEffect(() => {
+
         window.scrollTo(0, 0);
         setIsLoading(true);
         document.body.style.overflow = 'hidden';
-       
+
 
         setTimeout(() => {
             setIsLoading(false);

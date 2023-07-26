@@ -14,9 +14,7 @@ export default function AllMovies() {
     useEffect(() => {
 
 
-
         setTimeout(() => {
-            //layoutDispatch({ loading : false })
             setIsLoading(false)
             document.body.style.overflow = 'auto';
         }, 3000);

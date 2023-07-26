@@ -1,17 +1,28 @@
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 export default function MovieCard(props) {
-    const { movie } = props;
+    const { movie , index } = props;
+    const card = useRef(null);
+    
+    useEffect(() => {
 
-    // const movie = {
-    //     title : 'Avengers' , 
-    //     rating : 8  , 
-    //     year : 2020 ,
-    //     large_cover_image : 'assets/avengers.jpg'
-    // } 
+        const observer = new IntersectionObserver((entries) => {
+            entries.map(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('shown');
+                 
+                }
+            });
+        }, {
+            threshold: 0.3
+        });
 
+        observer.observe(card.current);
+
+    }, []);
     return (
-        <Link className="movie-card" to={`/movie-details/${movie.id}`}>
+        <Link className="movie-card" to={`/movie-details/${movie.id}`} ref={card} >
             <div className="movie-card-body"  >
                 <div className="movie-hover">
 

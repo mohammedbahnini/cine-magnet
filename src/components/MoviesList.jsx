@@ -20,7 +20,7 @@ export default function MoviesList(props) {
 
             { movies &&
                 movies.map( (movie ,index)=>{
-                    return <MovieCard movie={movie} key={index} />
+                    return <MovieCard movie={movie} key={index}  />
                 })
             }
 

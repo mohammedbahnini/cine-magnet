@@ -1,13 +1,14 @@
 import { createContext, useContext, useEffect, useReducer, useState } from "react";
 import MoviesList from "./MoviesList";
 import Pagination from "./Pagination";
-import { useSearchParams } from "react-router-dom";
+import { useOutletContext, useSearchParams } from "react-router-dom";
 import axios from "axios";
 import { SectionLoader } from "./SectionLoader";
 
 
 export default function MoviesSection() {
-    // const { state  } = useContext(stateContext);
+
+    const { setIsLoading  } = useOutletContext();
 
     const [state, setState] = useState({
         movies: [],
@@ -20,13 +21,18 @@ export default function MoviesSection() {
     })
     const [searchParams, setsearchParams] = useSearchParams();
     const params = Object.fromEntries([...searchParams]);
+    console.log(params);
 
 
     useEffect(() => {
 
+      
+
         setState((prev) => {
             return { ...prev, loading: true }
         });
+        setIsLoading(true);
+       
 
         const { moviesPerPage } = state;
 
@@ -37,7 +43,7 @@ export default function MoviesSection() {
                 const pages = Math.ceil(movie_count / moviesPerPage);
 
                 setTimeout(() => {
-
+                    setIsLoading(false);
                     setState((prev) => {
                         return {
                             ...prev,
@@ -48,6 +54,7 @@ export default function MoviesSection() {
                             loading: false
                         }
                     })
+
                 }, 1000);
 
             });

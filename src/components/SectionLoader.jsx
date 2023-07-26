@@ -1,8 +1,10 @@
+import spinner from '../assets/double-rings.svg';
+
 export function SectionLoader(){
 
     return (
         <div className="section-loader" >
-            <img src="./assets/double-rings.svg" />
+            <img src={spinner} />
         </div>
     )
 }
