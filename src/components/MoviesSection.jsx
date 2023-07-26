@@ -31,7 +31,7 @@ export default function MoviesSection() {
         setState((prev) => {
             return { ...prev, loading: true }
         });
-        setIsLoading(true);
+
        
 
         const { moviesPerPage } = state;
@@ -43,7 +43,7 @@ export default function MoviesSection() {
                 const pages = Math.ceil(movie_count / moviesPerPage);
 
                 setTimeout(() => {
-                    setIsLoading(false);
+              
                     setState((prev) => {
                         return {
                             ...prev,

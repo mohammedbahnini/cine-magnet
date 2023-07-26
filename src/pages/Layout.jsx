@@ -9,7 +9,7 @@ export default function Layout() {
 
     const [isLoading, setIsLoading] = useState(true);
     const { pathname , search } = useLocation();
-
+    console.log(pathname , search);
 
     useEffect(() => {
         window.scrollTo(0,0);
@@ -55,7 +55,7 @@ export default function Layout() {
         }, 1000);
 
 
-    }, [pathname]);
+    }, [pathname , search ]);
 
     return (
         <>
