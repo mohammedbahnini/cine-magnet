@@ -13,6 +13,47 @@
         @include mq($sm){
             grid-template-columns: repeat(2  , 1fr);
         }
+
+        .movie-card{
+            transition: .5s linear;
+            opacity: 0;
+            transform: translateY(4rem);
+        
+        
+            &.shown {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            @for $i from 4 through 1 {
+
+                @if($i != 4) {
+                    &:nth-child(4n - #{$i}) {
+                        transition-delay: calc( #{3 - $i} * 150ms);
+                    }
+                }
+        
+                @else {
+                    &:nth-child(4n - #{$i}) {
+                        transition-delay: calc(3 * 150ms);
+                    }
+                }
+        
+        
+            }
+        
+            @include mq($sm) {
+        
+                @for $i from 2 through 1 {
+        
+                    &:nth-child(2n - #{$i}) {
+                        transition-delay: calc(#{$i - 1} * 150ms);
+                    }
+            
+                }
+            }
+        
+        }
     }   
 
 }

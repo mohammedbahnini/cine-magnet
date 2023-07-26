@@ -1,17 +1,15 @@
-import React, { Suspense, lazy } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
-import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
+import { Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 
 import AllMovies from './pages/AllMovies.jsx'
 import SingleMovie from './pages/SingleMovie.jsx'
 import Layout from './pages/Layout.jsx'
-import { homeLoader } from './loaders/homeLoader.js'
+
 
 import Home from './pages/Home.jsx'
-// const Home = lazy( ()=> import('./pages/Home.jsx'));
-
-
+import ScrollToTop from './components/ScrollToTop.jsx'
 
 
 
@@ -29,6 +27,7 @@ export const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <ScrollToTop />
     <App />
   </React.StrictMode>,
 )

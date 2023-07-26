@@ -8,7 +8,7 @@ import { SectionLoader } from "./SectionLoader";
 
 export default function MoviesSection() {
 
-    const { setIsLoading  } = useOutletContext();
+    const { setIsLoading } = useOutletContext();
 
     const [state, setState] = useState({
         movies: [],
@@ -26,24 +26,23 @@ export default function MoviesSection() {
 
     useEffect(() => {
 
-      
 
         setState((prev) => {
             return { ...prev, loading: true }
         });
 
-       
 
         const { moviesPerPage } = state;
-
-        axios.get(`https://yts.mx/api/v2/list_movies.json?page=${params.page || 1}&query_term=${params.query || ''}`)
+        const link = `https://yts.mx/api/v2/list_movies.json?page=${params.page || 1}&query_term=${params.query || ''}`;
+        console.log('link ',link);
+        axios.get(link)
             .then((response) => {
-       
+
                 const { movies, page_number, movie_count } = response.data.data;
                 const pages = Math.ceil(movie_count / moviesPerPage);
 
                 setTimeout(() => {
-              
+
                     setState((prev) => {
                         return {
                             ...prev,
@@ -55,10 +54,10 @@ export default function MoviesSection() {
                         }
                     })
 
-                }, 1000);
+                }, 100);
 
             });
-    }, [params.query, params.page]);
+    }, [params.query, params.page , params.rating , params.sort , params.quality ]);
 
     return (
 
@@ -66,11 +65,14 @@ export default function MoviesSection() {
 
             <div className="container">
 
-                <h1 className="main-section-title title">{state.totalMovies} movie found</h1>
-
                 {state.loading && <SectionLoader />}
+
+
+
                 {!state.loading &&
                     <>
+                        <h1 className="main-section-title title">{state.totalMovies} movie found</h1>
+
                         <MoviesList movies={state.movies} currentPage={state.currentPage} moviesPerPage={state.moviesPerPage} />
                         <Pagination pages={state.pages} currentPage={state.currentPage} pagesToShow={state.pagesToShow} querySearch={params.query || ''} />
                     </>
