@@ -91,10 +91,10 @@ export default function SearchSection() {
         }
     ];
 
-    useEffect(() => {
-        console.log(params);
+    // useEffect(() => {
+    //     console.log(params);
        
-    }, [searchText , quality , rating , sort , order ])
+    // }, [searchText , quality , rating , sort , order ])
 
     return (
         <section className="search">

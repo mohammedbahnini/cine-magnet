@@ -10,7 +10,7 @@ export default function Pagination(props) {
 
 
     const {currentPage , pages , pagesToShow , querySearch  } = props ;
-    console.log(props);
+
 
     const createPaginationItems = () => {
 

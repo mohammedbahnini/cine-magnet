@@ -9,7 +9,7 @@ import { useSearchParams } from "react-router-dom";
 export default function MoviesList(props) {
 
     const { movies } = props;
-    console.log(props);
+
 
   
 

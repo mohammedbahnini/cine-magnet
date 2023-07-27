@@ -21,7 +21,7 @@ export default function MoviesSection() {
     })
     const [searchParams, setsearchParams] = useSearchParams();
     const params = Object.fromEntries([...searchParams]);
-    console.log(params);
+
     const { query , page , sort , order , genre , quality , rating }= params;
 
 
@@ -37,7 +37,7 @@ export default function MoviesSection() {
         //const link = `https://yts.mx/api/v2/list_movies.json?page=${params.page || 1}&query_term=${params.query || ''}`;
         const link = `https://yts.mx/api/v2/list_movies.json?page=${page || 1}&limit=20&query_term=${query || ''}&quality=${quality || 'all'}&minimum_rating=${rating || 0}&genre=${genre ||'all'}&sort_by=${sort || 'date_added'}&order_by=${order || 'desc'}`;
         
-        console.log('link ',link);
+   
         axios.get(link)
             .then((response) => {
 

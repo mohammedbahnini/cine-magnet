@@ -9,12 +9,11 @@ export default function Layout() {
 
     const [isLoading, setIsLoading] = useState(true);
     const { pathname , search } = useLocation();
-    console.log(pathname , search);
 
     useEffect(() => {
         window.scrollTo(0,0);
         //  // add event listener to the doc for nav styling
-        console.log(pathname);
+
         const header = document.querySelector('header');
 
         const scrollEvent = function (e) {

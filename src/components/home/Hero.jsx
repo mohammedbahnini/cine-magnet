@@ -49,7 +49,7 @@ export default function Hero() {
                             value={searchText} 
                             onChange={(e)=>setSearchText(e.target.value)} />
 
-                            <Link className="search-submit" to={`/all-movies&query=${searchText}`}>
+                            <Link className="search-submit" to={`/all-movies?query=${searchText}`}>
                                 <span>
                                     <i className="fa-solid fa-magnifying-glass"></i>
                                 </span> Search

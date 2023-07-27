@@ -2,11 +2,11 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import MovieImage from "../shared/MovieImage";
+import SectionLoader from '../shared/SectionLoader.jsx';
 
 export default function MovieDetails() {
 
     const { movieId } = useParams();
-    console.log(movieId);
 
 
     const [movie, setMovie] = useState(null);
@@ -29,7 +29,7 @@ export default function MovieDetails() {
             .catch((error) => {
                 setLoading(false);
                 setError('An error has occured !!');
-                console.log(error);
+
 
             });
     }, [movieId]);
@@ -38,7 +38,7 @@ export default function MovieDetails() {
         <section className="movie-wrapper">
 
             <div className="container">
-                {loading && !error && <p>Loading ...</p>}
+                {loading && !error && <SectionLoader />}
                 {error && !loading && <p>{error}</p>}
                 {
                     !loading && !error &&

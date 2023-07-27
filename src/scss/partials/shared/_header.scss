@@ -80,20 +80,70 @@ header{
         }
     }
 
-    .change-theme-btn{
-        padding: .5rem 2rem;
-        border-radius: 5px;
-        text-transform: capitalize;
-        @include mq($sm){
-            flex: 1;
-        }
-    }
+   
 
     &.scrolled{
         background-color: white !important;
         box-shadow: 0 2px 18px 2px rgba(black , .1) !important;
         nav a.link{
             color: $title-color !important;
+        }
+    }
+}
+.change-theme-btn{
+    padding: 5px ;
+    border-radius: 80px;
+    text-transform: capitalize;
+    position: fixed ;
+    bottom: 2rem;
+    right: 2rem;
+    border: none;
+    outline: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    background-color: $body-bg-dark-mode;
+    color: white ;
+    height: 35px;
+    
+    @include mq($sm){
+        flex: 1;
+    }
+    span{
+        border-radius: 50%;
+        padding: 3px;
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        position: relative;
+        overflow: hidden;
+        transition: width , padding , .2s ease-in;
+      
+        i{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
+    }
+    .sun{
+        background-color: $body-bg-dark-mode ;
+        color: white ;
+        &.hidden{
+            width: 0;
+            height: 0;
+            padding: 0;
+        }
+        
+    }
+    .moon{
+        background-color: white;
+        color: black;
+        &.hidden{
+            width: 0;
+            height: 0;
+            padding: 0;
         }
     }
 }
@@ -108,4 +158,10 @@ body.dark{
             }
         }
     }
+    .change-theme-btn{
+        background-color: white ;
+        color: black;
+        
+    }
 }
+
