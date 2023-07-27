@@ -13,6 +13,9 @@ body {
     min-height: 100vh;
     font-family: $text-font-family ;
     background-color: $bg-light-gray;
+    &.dark{
+        background-color: $body-bg-dark-mode;
+    }
 
 }
 .container {
@@ -68,9 +71,17 @@ p{
         border-radius: 4px;
         background-color: $light-red;
         left: 0;
-        bottom: -.5rem;
+        bottom: -.7rem;
     }
 
+}
+body.dark{
+    .main-section-title{
+        color: $title-color-dark-mode;
+        &::after{
+            background-color: $title-underline-color;
+        }
+    }
 }
 
 .arrows{
@@ -115,6 +126,12 @@ p{
         img{
             width: 5rem;
         }
+    }
+}
+
+body.dark{
+    .page-loader{
+        background-color: rgb(39, 55, 77);
     }
 }
 

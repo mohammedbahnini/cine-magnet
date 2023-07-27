@@ -9,3 +9,9 @@
         }
     }
 }
+
+body.dark{
+    .suggestions{
+        background-color: rgba($dark-gray  , .1);
+    }
+}

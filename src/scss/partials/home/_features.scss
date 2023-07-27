@@ -85,3 +85,18 @@
     }
 
 }
+
+body.dark{
+    .feature{
+        background-color: $feature-bg-dark-mode;
+        &-logo{
+            color: $title-underline-color;
+        }
+        &-title{
+            color: $title-color-dark-mode;
+        }
+        p{
+            color: $text-color-dark-mode;
+        }
+    }
+}

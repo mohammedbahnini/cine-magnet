@@ -165,3 +165,32 @@
         }
     }
 }
+
+body.dark{
+    .movie-title {
+        .title , span {
+            color: $title-color-dark-mode !important;
+           
+        }
+
+    }
+
+    .movie-genres , .movie-year{
+        color: $text-color-dark-mode !important;
+    }
+
+    .movie-overview .overview-title , 
+    .movie-links .title{
+
+        color: $title-color-dark-mode !important;
+
+        &::after{
+            background-color: $title-underline-color;
+        }
+    }
+
+    .movie-overview p{
+        color: $text-color-dark-mode;
+    }
+
+}

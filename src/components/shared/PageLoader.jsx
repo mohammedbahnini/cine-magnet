@@ -1,4 +1,4 @@
-import spinner from '../../assets/double-rings.svg';
+import spinner from '../../assets/infinity.svg';
 
 export default function PageLoader() {
 

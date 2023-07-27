@@ -116,3 +116,10 @@
 
 
 }
+
+body.dark{
+    .movie-card-footer{
+        background-color: $feature-bg-dark-mode;
+        color: white;
+    }
+}
