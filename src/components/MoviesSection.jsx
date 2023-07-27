@@ -22,6 +22,7 @@ export default function MoviesSection() {
     const [searchParams, setsearchParams] = useSearchParams();
     const params = Object.fromEntries([...searchParams]);
     console.log(params);
+    const { query , page , sort , order , genre , quality , rating }= params;
 
 
     useEffect(() => {
@@ -33,7 +34,9 @@ export default function MoviesSection() {
 
 
         const { moviesPerPage } = state;
-        const link = `https://yts.mx/api/v2/list_movies.json?page=${params.page || 1}&query_term=${params.query || ''}`;
+        //const link = `https://yts.mx/api/v2/list_movies.json?page=${params.page || 1}&query_term=${params.query || ''}`;
+        const link = `https://yts.mx/api/v2/list_movies.json?page=${page || 1}&limit=20&query_term=${query || ''}&quality=${quality}&minimum_rating=${rating}&genre=${genre}&sort_by=${sort}&order_by=${order}`;
+        
         console.log('link ',link);
         axios.get(link)
             .then((response) => {
@@ -57,7 +60,7 @@ export default function MoviesSection() {
                 }, 100);
 
             });
-    }, [params.query, params.page , params.rating , params.sort , params.quality ]);
+    }, [ query, page , rating , sort , quality , order ]);
 
     return (
 
