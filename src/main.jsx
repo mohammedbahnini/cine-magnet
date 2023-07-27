@@ -9,7 +9,6 @@ import Layout from './pages/Layout.jsx'
 
 
 import Home from './pages/Home.jsx'
-import ScrollToTop from './components/ScrollToTop.jsx'
 
 
 
@@ -27,7 +26,6 @@ export const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ScrollToTop />
     <App />
   </React.StrictMode>,
 )

@@ -1,7 +1,7 @@
 import { Outlet, useLocation } from "react-router-dom";
-import Header from "../components/Header";
-import { createContext, useEffect, useLayoutEffect, useReducer, useState } from "react";
-import PageLoader from "../components/PageLoader";
+import Header from "../components/shared/Header";
+import {  useEffect, useLayoutEffect, useState } from "react";
+import PageLoader from "../components/shared/PageLoader";
 
 
 
@@ -59,6 +59,7 @@ export default function Layout() {
 
     return (
         <>
+
             {isLoading && <PageLoader />}
 
             <>

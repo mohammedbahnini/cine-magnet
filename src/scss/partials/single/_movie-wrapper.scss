@@ -3,7 +3,7 @@
     margin-bottom: 6rem;
     .container {
         display: flex;
-        gap: 8rem;
+        gap: 4rem;
         @include mq($md){
             gap: 3rem;
         }
@@ -28,10 +28,13 @@
            overflow: hidden;
            margin-bottom: 1rem;
            box-shadow: 0 0 18px 0 rgba(black , .1);
-            img{
+           width: 100%;
+           aspect-ratio: 9 / 14;
+            img {
                 display: block;
                 width: 100%;
-
+                aspect-ratio: 9 / 14;
+                margin: 0 auto ;
             }
         }
 

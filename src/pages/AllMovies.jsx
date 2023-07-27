@@ -1,8 +1,6 @@
-import {  useEffect  } from "react";
-import SearchSection from "../components/SearchSection";
-import MoviesSection from "../components/MoviesSection";
+import SearchSection from "../components/all-movies/SearchSection";
+import MoviesSection from "../components/all-movies/MoviesSection";
 import '../scss/all-movies.scss';
-import { useOutletContext, useSearchParams } from "react-router-dom";
 
 export default function AllMovies() {
 

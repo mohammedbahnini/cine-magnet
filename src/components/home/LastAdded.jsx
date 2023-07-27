@@ -1,13 +1,14 @@
+import Slider from "react-slick";
 import { useEffect, useRef, useState } from "react";
-import Slider from "react-slick"
-import MovieCard from "./MovieCard";
+import MovieCard from "../shared/MovieCard";
 import axios from "axios";
-import { SectionLoader } from "./SectionLoader";
+import SectionLoader from "../shared/SectionLoader";
 
-export default function MostDownLoads() {
+
+
+export default function LastAdded(props) {
 
     const slider = useRef(null);
-
     const config = {
         slidesToShow: 4,
         slidesToScroll: 4,
@@ -33,55 +34,51 @@ export default function MostDownLoads() {
         arrows: false
     };
 
-
-
     // data about movies
-    const [movies, setMovies] = useState([]);
+    const [lastAddedMovies, setlastAddedMovies] = useState([]);
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
 
-        // get last added movies
-        axios.get('https://yts.mx/api/v2/list_movies.json?limit=12&sort_by=download_count&order_by=desc')
-            .then((response) => {
-
-                const { movies } = response.data.data;
-                setMovies(movies);
-                setLoading(false);
-            })
-            .catch((error) => {
-                console.log(error);
-                setError(true);
-                setLoading(false);
-            });
+       // get last added movies
+       axios.get('https://yts.mx/api/v2/list_movies.json?limit=20&sort_by=date_added')
+       .then((response) => {
+           const { movies } = response.data.data;
+           setlastAddedMovies(movies);
+           setLoading(false);
+       })
+       .catch((error) => {
+           console.log(error);
+           setError(true);
+           setLoading(false);
+       });
 
 
     }, []);
 
 
-
     return (
-        <section className="main-section most-downloads">
-
+        <section className="main-section last-added">
             <div className="container">
-                <h1 className="main-section-title">Most Downloads</h1>
+
+                <h2 className="main-section-title">Last Added</h2>
 
                 {loading && <SectionLoader />}
-                
-                {error && <p>An error has occured !</p>}
+                {error && <p>error while getting data</p>}
 
-                {!loading && !error &&
-                    <>
-
-                        <Slider {...config} ref={slider} className="most-downloads-items">
-
-                            {
-                                movies.map((movie, index) => <MovieCard key={index} movie={movie} />)
-                            }
+                {!error && !loading &&
+                    <><Slider {...config} ref={slider} className="last-added-items">
 
 
-                        </Slider>
+                        {lastAddedMovies.map((movie, index) => {
+                            return (
+                                <MovieCard movie={movie} key={index} />
+                            )
+                        })}
+
+
+                    </Slider>
 
                         <div className="arrows">
                             <button className="prev"
@@ -94,9 +91,7 @@ export default function MostDownLoads() {
                             </button>
                         </div>
                     </>
-
                 }
-
 
 
 

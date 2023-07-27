@@ -1,17 +1,23 @@
-import { useEffect, useRef } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { ImageLoader } from "./ImageLoader";
+import imagePlaceHolder from '../../assets/double-rings.svg';
+import ProgressiveImage from "react-progressive-image";
+import MovieImage from "./MovieImage";
+
+
 
 export default function MovieCard(props) {
-    const { movie , index } = props;
+    const { movie } = props;
     const card = useRef(null);
-    
+
     useEffect(() => {
 
         const observer = new IntersectionObserver((entries) => {
             entries.map(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('shown');
-                 
+
                 }
             });
         }, {
@@ -29,7 +35,7 @@ export default function MovieCard(props) {
                     <Link to={`/movie-details/${movie.id}`} className="movie-link">View Details</Link>
                 </div>
                 <div className="movie-poster">
-                    <img src={movie.large_cover_image || movie.medium_cover_image} alt="Avengers" />
+                    <MovieImage src={movie.large_cover_image || movie.medium_cover_image} alt={movie.title} />
                 </div>
 
                 <span className="movie-year">{movie.year}</span>

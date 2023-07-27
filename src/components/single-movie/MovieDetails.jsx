@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
+import MovieImage from "../shared/MovieImage";
 
 export default function MovieDetails() {
 
@@ -46,7 +47,8 @@ export default function MovieDetails() {
                         <div className="movie-poster">
 
                             <div className="movie-poster-wrapper">
-                                <img src={movie.large_cover_image} alt={movie.title} />
+                                {/* <img src={movie.large_cover_image} alt={movie.title} /> */}
+                                <MovieImage src={movie.large_cover_image} alt={movie.title}  />
                             </div>
 
 

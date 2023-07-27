@@ -1,9 +1,9 @@
 import { createContext, useContext, useEffect, useReducer, useState } from "react";
 import MoviesList from "./MoviesList";
-import Pagination from "./Pagination";
+import Pagination from "../shared/Pagination";
 import { useOutletContext, useSearchParams } from "react-router-dom";
 import axios from "axios";
-import { SectionLoader } from "./SectionLoader";
+import SectionLoader from "../shared/SectionLoader";
 
 
 export default function MoviesSection() {
@@ -35,7 +35,7 @@ export default function MoviesSection() {
 
         const { moviesPerPage } = state;
         //const link = `https://yts.mx/api/v2/list_movies.json?page=${params.page || 1}&query_term=${params.query || ''}`;
-        const link = `https://yts.mx/api/v2/list_movies.json?page=${page || 1}&limit=20&query_term=${query || ''}&quality=${quality}&minimum_rating=${rating}&genre=${genre}&sort_by=${sort}&order_by=${order}`;
+        const link = `https://yts.mx/api/v2/list_movies.json?page=${page || 1}&limit=20&query_term=${query || ''}&quality=${quality || 'all'}&minimum_rating=${rating || 0}&genre=${genre ||'all'}&sort_by=${sort || 'date_added'}&order_by=${order || 'desc'}`;
         
         console.log('link ',link);
         axios.get(link)

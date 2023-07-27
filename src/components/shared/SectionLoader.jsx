@@ -1,6 +1,6 @@
-import spinner from '../assets/double-rings.svg';
+import spinner from '../../assets/double-rings.svg';
 
-export function SectionLoader(){
+export default function SectionLoader(){
 
     return (
         <div className="section-loader" >

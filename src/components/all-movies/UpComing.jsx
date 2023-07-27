@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Slider from "react-slick"
-import MovieCard from "./MovieCard";
+import MovieCard from "../shared/MovieCard";
 import axios from "axios";
 
 export default function UpComing() {

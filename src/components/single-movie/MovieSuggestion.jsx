@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
-import MovieCard from "./MovieCard";
+import MovieCard from "../shared/MovieCard";
 
 export default function MovieSuggestions() {
     const { movieId } = useParams();

@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react"
 
-import MovieCard from '../components/MovieCard';
+import MovieCard from '../shared/MovieCard';
 import axios from "axios";
 import { useSearchParams } from "react-router-dom";
 

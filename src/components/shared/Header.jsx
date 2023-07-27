@@ -1,9 +1,7 @@
-import { Link, useLocation } from 'react-router-dom';
-import logo from '../assets/logo.png';
+import { Link } from 'react-router-dom';
+import logo from '../../assets/logo.png';
 
 export default function Header(props){
-    const { className } = props;
-    const { pathname } = useLocation();
 
     return (
         <header className={'scrolled'}>

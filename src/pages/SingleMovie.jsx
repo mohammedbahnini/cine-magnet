@@ -1,7 +1,5 @@
-import { useEffect } from "react";
-import Header from "../components/Header";
-import MovieDetails from "../components/MovieDetails";
-import MovieSuggestions from "../components/MovieSuggestion";
+import MovieDetails from "../components/single-movie/MovieDetails";
+import MovieSuggestions from "../components/single-movie/MovieSuggestion";
 import '../scss/single.scss';
 
 export default function SingleMovie() {
